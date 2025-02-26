@@ -76,8 +76,12 @@ def get_cookies(url):
     Returns:
         RequestsCookieJar: Cookies returned by the server.
     """
-    response = requests.get(url)
-    return response.cookies
+    try:
+        response = requests.get(url)
+        return response.cookies
+    except Exception as e:
+        print(f"Error: {e}")
+        return None     
 
 def get_elapsed_time(url):
     """
@@ -144,32 +148,32 @@ def get_header_key_value(url):
     response = requests.get(url)
     return dict(response.headers.items())
 
-if __name__ == "__main__":
-    test_url = input("Enter the URL to scrape: ")
+# if __name__ == "__main__":
+#     test_url = input("Enter the URL to scrape: ")
 
-    print("\n=== Fetching Text ===")
-    print(get_text(test_url))
+#     print("\n=== Fetching Text ===")
+#     print(get_text(test_url))
     
-    print("\n=== Fetching URL ===")
-    print(get_url(test_url))
+#     print("\n=== Fetching URL ===")
+#     print(get_url(test_url))
     
-    print("\n=== Fetching Status Code ===")
-    print(get_status_code(test_url))
+#     print("\n=== Fetching Status Code ===")
+#     print(get_status_code(test_url))
     
-    print("\n=== Fetching Cookies ===")
-    print(get_cookies(test_url))
+#     print("\n=== Fetching Cookies ===")
+#     print(get_cookies(test_url))
     
-    print("\n=== Fetching Elapsed Time ===")
-    print(get_elapsed_time(test_url))
+#     print("\n=== Fetching Elapsed Time ===")
+#     print(get_elapsed_time(test_url))
     
-    print("\n=== Fetching Headers ===")
-    print(get_headers(test_url))
+#     print("\n=== Fetching Headers ===")
+#     print(get_headers(test_url))
     
-    print("\n=== Fetching Header Items ===")
-    print(get_header_items(test_url))
+#     print("\n=== Fetching Header Items ===")
+#     print(get_header_items(test_url))
     
-    print("\n=== Fetching Header Keys ===")
-    print(get_header_keys(test_url))
+#     print("\n=== Fetching Header Keys ===")
+#     print(get_header_keys(test_url))
     
-    print("\n=== Fetching Header Key-Value Pairs ===")
-    print(get_header_key_value(test_url))
+#     print("\n=== Fetching Header Key-Value Pairs ===")
+#     print(get_header_key_value(test_url))
